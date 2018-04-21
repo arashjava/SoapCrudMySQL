@@ -65,14 +65,14 @@ public class BookEndpoint {
         boolean flag = bookService.addBook(book);
         if (flag == false) {
         	serviceStatus.setStatusCode("CONFLICT");
-        	serviceStatus.setMessage("Content Already Available");
+        	serviceStatus.setMessage("Book is already registered...");
         	response.setServiceStatus(serviceStatus);
         } else {
 			BookInfo bookInfo = new BookInfo();
 	        BeanUtils.copyProperties(book, bookInfo);
 			response.setBookInfo(bookInfo);
         	serviceStatus.setStatusCode("SUCCESS");
-        	serviceStatus.setMessage("Content Added Successfully");
+        	serviceStatus.setMessage("Book is added successfully...");
         	response.setServiceStatus(serviceStatus);
         }
         return response;
@@ -85,7 +85,7 @@ public class BookEndpoint {
 		bookService.updateBook(book);
     	ServiceStatus serviceStatus = new ServiceStatus();
     	serviceStatus.setStatusCode("SUCCESS");
-    	serviceStatus.setMessage("Content Updated Successfully");
+    	serviceStatus.setMessage("Book is updated successfully...");
     	UpdateBookResponse response = new UpdateBookResponse();
     	response.setServiceStatus(serviceStatus);
     	return response;
@@ -97,11 +97,11 @@ public class BookEndpoint {
     	ServiceStatus serviceStatus = new ServiceStatus();
 		if (book == null ) {
 	    	serviceStatus.setStatusCode("FAIL");
-	    	serviceStatus.setMessage("Content Not Available");
+	    	serviceStatus.setMessage("Book is not registered, yet...");
 		} else {
 			bookService.deleteBook(book);
 	    	serviceStatus.setStatusCode("SUCCESS");
-	    	serviceStatus.setMessage("Content Deleted Successfully");
+	    	serviceStatus.setMessage("Book is deleted successfully...");
 		}
     	DeleteBookResponse response = new DeleteBookResponse();
     	response.setServiceStatus(serviceStatus);
