@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS `book`;
+USE `book`;
+
+CREATE TABLE IF NOT EXISTS `books` (
+  `book_id` bigint(5) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `price` float(6,2) NOT NULL,
+  PRIMARY KEY (`book_id`)
+) ENGINE=InnoDB;
+
+INSERT INTO `books` (`book_id`, `title`, `price`) VALUES
+	(1, 'Java for beginners', 23.99),
+	(2, 'Database Programming', 12.5); 
+    
+ 
